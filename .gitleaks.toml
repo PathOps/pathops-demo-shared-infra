@@ -1,0 +1,7 @@
+title = "pathops-demo-shared-infra"
+
+[allowlist]
+paths = [
+  '''\.secrets/''',
+  '''\.secrets\.example/'''
+]

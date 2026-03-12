@@ -10,6 +10,3 @@ resources:
   - keycloak/service.yaml
   - keycloak/deployment.yaml
   - keycloak/ingress.yaml
-  - keycloak/external-secret-keycloak.yaml
-  - keycloak/external-secret-postgres.yaml
-  - ../external-secrets/secretstore.yaml

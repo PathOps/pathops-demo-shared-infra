@@ -4,6 +4,7 @@ metadata:
   name: keycloak-postgres-data
   namespace: keycloak
 spec:
+  storageClassName: microk8s-hostpath
   accessModes:
     - ReadWriteOnce
   resources:

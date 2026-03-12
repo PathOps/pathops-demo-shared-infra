@@ -17,16 +17,3 @@ vault operator unseal
 vault login
 vault secrets enable -path=kv kv-v2
 ```
-
-## Bootstrap secrets
-
-```bash
-vault kv put kv/pathops/shared/keycloak \
-  KEYCLOAK_ADMIN=admin \
-  KEYCLOAK_ADMIN_PASSWORD='change-me-now'
-
-vault kv put kv/pathops/shared/postgres \
-  POSTGRES_DB=keycloak \
-  POSTGRES_USER=keycloak \
-  POSTGRES_PASSWORD='change-me'
-```
