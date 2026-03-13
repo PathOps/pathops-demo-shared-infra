@@ -29,5 +29,5 @@ kubectl -n keycloak logs deploy/keycloak
 ## Access
 
 ```
-URL: http://keycloak.demo.pathops.io
+URL: https://keycloak.demo.pathops.io
 ```
