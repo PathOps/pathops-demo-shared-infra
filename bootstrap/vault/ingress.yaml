@@ -3,6 +3,9 @@ kind: Ingress
 metadata:
   name: vault
   namespace: vault
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   rules:
     - host: vault.demo.pathops.io

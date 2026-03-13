@@ -4,6 +4,7 @@ metadata:
   name: vault-data
   namespace: vault
 spec:
+  storageClassName: microk8s-hostpath
   accessModes:
     - ReadWriteOnce
   resources:
