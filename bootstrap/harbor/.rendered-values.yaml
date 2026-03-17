@@ -1,0 +1,100 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: none
+  ingress:
+    className: public
+    hosts:
+      core: harbor.demo.pathops.io
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+
+externalURL: https://harbor.demo.pathops.io
+
+harborAdminPassword: "IttWild973"
+secretKey: "FPAqz7NGxpeDPchI"
+
+internalTLS:
+  enabled: false
+
+persistence:
+  enabled: true
+  resourcePolicy: keep
+  imageChartStorage:
+    type: filesystem
+  persistentVolumeClaim:
+    registry:
+      storageClass: microk8s-hostpath
+      accessMode: ReadWriteOnce
+      size: 50Gi
+    jobservice:
+      jobLog:
+        storageClass: microk8s-hostpath
+        accessMode: ReadWriteOnce
+        size: 5Gi
+    database:
+      storageClass: microk8s-hostpath
+      accessMode: ReadWriteOnce
+      size: 8Gi
+    redis:
+      storageClass: microk8s-hostpath
+      accessMode: ReadWriteOnce
+      size: 2Gi
+    trivy:
+      storageClass: microk8s-hostpath
+      accessMode: ReadWriteOnce
+      size: 5Gi
+
+trivy:
+  enabled: false
+
+portal:
+  replicas: 1
+
+core:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+jobservice:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 150m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 768Mi
+
+registry:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+database:
+  type: internal
+  internal:
+    password: "changeit"
+
+redis:
+  type: internal
+
+metrics:
+  enabled: false
+
+updateStrategy:
+  type: Recreate

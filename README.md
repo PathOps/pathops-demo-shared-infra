@@ -15,6 +15,8 @@ git config core.hooksPath .githooks
 
 - Keycloak
 - PostgreSQL for Keycloak
+- Vault
+- Harbor
 
 ## Current installation order
 
@@ -29,12 +31,20 @@ Edit:
 ```
 .secrets/keycloak.env
 .secrets/postgres.env
+.secrets/harbor.env
 ```
 
 ### 2. Install Keycloak and PostgreSQL
 
 ```bash
 cd bootstrap/keycloak
+./apply.sh
+```
+
+### 4. Install Harbor
+
+```bash
+cd bootstrap/harbor
 ./apply.sh
 ```
 
