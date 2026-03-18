@@ -17,6 +17,7 @@ git config core.hooksPath .githooks
 - PostgreSQL for Keycloak
 - Vault
 - Harbor
+- MinIO
 
 ## Current installation order
 
@@ -32,6 +33,7 @@ Edit:
 .secrets/keycloak.env
 .secrets/postgres.env
 .secrets/harbor.env
+.secrets/minio.env
 ```
 
 ### 2. Install Keycloak and PostgreSQL
@@ -41,10 +43,24 @@ cd bootstrap/keycloak
 ./apply.sh
 ```
 
+## 3. Install Vault
+
+```bash
+cd bootstrap/vault
+./apply.sh
+```
+
 ### 4. Install Harbor
 
 ```bash
 cd bootstrap/harbor
+./apply.sh
+```
+
+### 5. Install MinIO
+
+```bash
+cd bootstrap/minio
 ./apply.sh
 ```
 
