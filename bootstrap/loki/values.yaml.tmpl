@@ -1,0 +1,121 @@
+deploymentMode: SingleBinary
+
+loki:
+  auth_enabled: false
+
+  commonConfig:
+    replication_factor: 1
+
+  schemaConfig:
+    configs:
+      - from: "2024-04-01"
+        store: tsdb
+        object_store: s3
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
+
+  pattern_ingester:
+    enabled: false
+
+  limits_config:
+    allow_structured_metadata: false
+    volume_enabled: true
+
+  ruler:
+    enable_api: false
+
+  storage:
+    type: s3
+    bucketNames:
+      chunks: ${LOKI_S3_BUCKET}
+      ruler: ${LOKI_S3_BUCKET}
+      admin: ${LOKI_S3_BUCKET}
+    s3:
+      endpoint: minio.minio.svc.cluster.local:9000
+      region: ${LOKI_S3_REGION}
+      accessKeyId: ${MINIO_ROOT_USER}
+      secretAccessKey: ${MINIO_ROOT_PASSWORD}
+      s3ForcePathStyle: true
+      insecure: true
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    accessModes:
+      - ReadWriteOnce
+    size: 20Gi
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1536Mi
+    limits:
+      cpu: 1500m
+      memory: 3Gi
+
+gateway:
+  enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: public
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+    hosts:
+      - host: loki.demo.pathops.io
+        paths:
+          - path: /
+            pathType: Prefix
+
+lokiCanary:
+  enabled: true
+
+monitoring:
+  dashboards:
+    enabled: false
+  rules:
+    enabled: false
+  serviceMonitor:
+    enabled: false
+
+chunksCache:
+  enabled: false
+
+resultsCache:
+  enabled: false
+
+minio:
+  enabled: false
+
+backend:
+  replicas: 0
+read:
+  replicas: 0
+write:
+  replicas: 0
+ingester:
+  replicas: 0
+querier:
+  replicas: 0
+queryFrontend:
+  replicas: 0
+queryScheduler:
+  replicas: 0
+distributor:
+  replicas: 0
+compactor:
+  replicas: 0
+indexGateway:
+  replicas: 0
+bloomCompactor:
+  replicas: 0
+bloomGateway:
+  replicas: 0
+
+sidecar:
+  rules:
+    enabled: false

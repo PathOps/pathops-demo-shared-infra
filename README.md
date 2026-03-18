@@ -18,6 +18,7 @@ git config core.hooksPath .githooks
 - Vault
 - Harbor
 - MinIO
+- Loki
 
 ## Current installation order
 
@@ -34,6 +35,7 @@ Edit:
 .secrets/postgres.env
 .secrets/harbor.env
 .secrets/minio.env
+.secrets/loki.env
 ```
 
 ### 2. Install Keycloak and PostgreSQL
@@ -61,6 +63,13 @@ cd bootstrap/harbor
 
 ```bash
 cd bootstrap/minio
+./apply.sh
+```
+
+### 6. Install Loki
+
+```bash
+cd bootstrap/loki
 ./apply.sh
 ```
 
