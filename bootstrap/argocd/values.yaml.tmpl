@@ -1,0 +1,81 @@
+global:
+  domain: argocd.demo.pathops.io
+
+crds:
+  install: true
+  keep: true
+
+configs:
+  params:
+    server.insecure: "true"
+
+  secret:
+    argocdServerAdminPassword: "${ARGOCD_ADMIN_PASSWORD_BCRYPT}"
+    argocdServerAdminPasswordMtime: "${ARGOCD_ADMIN_PASSWORD_MTIME}"
+
+  cm:
+    url: https://argocd.demo.pathops.io
+
+  rbac:
+    policy.default: role:readonly
+
+server:
+  ingress:
+    enabled: false
+
+  extraArgs:
+    - --insecure
+
+  service:
+    type: ClusterIP
+
+  resources:
+    requests:
+      cpu: 150m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+controller:
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1500m
+      memory: 2Gi
+
+repoServer:
+  resources:
+    requests:
+      cpu: 150m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+redis:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+applicationSet:
+  enabled: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+notifications:
+  enabled: false
+
+dex:
+  enabled: true
