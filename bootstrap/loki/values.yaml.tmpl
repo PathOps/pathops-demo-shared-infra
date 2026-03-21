@@ -59,17 +59,7 @@ singleBinary:
 gateway:
   enabled: true
   ingress:
-    enabled: true
-    ingressClassName: public
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      nginx.ingress.kubernetes.io/proxy-body-size: "20m"
-    hosts:
-      - host: loki.demo.pathops.io
-        paths:
-          - path: /
-            pathType: Prefix
+    enabled: false
 
 lokiCanary:
   enabled: true

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loki-proxy
+  namespace: loki
+spec:
+  selector:
+    app: loki-proxy
+
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: loki-proxy
+  namespace: loki
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - loki.demo.pathops.io
+      secretName: demo-wildcard-tls
+
+  rules:
+    - host: loki.demo.pathops.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: loki-proxy
+                port:
+                  number: 80
