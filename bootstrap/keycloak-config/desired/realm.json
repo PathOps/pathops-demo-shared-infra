@@ -1,0 +1,10 @@
+{
+  "realm": "${KEYCLOAK_REALM}",
+  "enabled": true,
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": true,
+  "verifyEmail": true
+}

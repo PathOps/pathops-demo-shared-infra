@@ -1,0 +1,21 @@
+{
+  "clientId": "gitlab",
+  "name": "GitLab",
+  "enabled": true,
+  "protocol": "openid-connect",
+  "publicClient": false,
+  "standardFlowEnabled": true,
+  "directAccessGrantsEnabled": false,
+  "serviceAccountsEnabled": false,
+  "rootUrl": "https://gitlab.demo.pathops.io",
+  "baseUrl": "https://gitlab.demo.pathops.io",
+  "redirectUris": [
+    "https://gitlab.demo.pathops.io/users/auth/openid_connect/callback"
+  ],
+  "webOrigins": [
+    "https://gitlab.demo.pathops.io"
+  ],
+  "attributes": {
+    "pkce.code.challenge.method": "S256"
+  }
+}

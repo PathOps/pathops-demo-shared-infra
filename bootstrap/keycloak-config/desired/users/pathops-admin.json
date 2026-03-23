@@ -1,0 +1,8 @@
+{
+  "username": "${PATHOPS_ADMIN_USERNAME}",
+  "enabled": true,
+  "emailVerified": true,
+  "email": "${PATHOPS_ADMIN_EMAIL}",
+  "firstName": "PathOps",
+  "lastName": "Admin"
+}
