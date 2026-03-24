@@ -1,0 +1,19 @@
+{
+  "clientId": "jenkins",
+  "name": "Jenkins",
+  "enabled": true,
+  "protocol": "openid-connect",
+  "publicClient": false,
+  "standardFlowEnabled": true,
+  "directAccessGrantsEnabled": false,
+  "serviceAccountsEnabled": false,
+  "rootUrl": "https://jenkins.demo.pathops.io",
+  "baseUrl": "https://jenkins.demo.pathops.io",
+  "redirectUris": [
+    "https://jenkins.demo.pathops.io/securityRealm/finishLogin",
+    "https://jenkins.demo.pathops.io/OicLogout"
+  ],
+  "webOrigins": [
+    "https://jenkins.demo.pathops.io"
+  ]
+}

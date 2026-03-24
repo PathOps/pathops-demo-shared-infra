@@ -233,19 +233,3 @@ create_or_update_client() {
     kc_with_remote_file "$payload" create "realms/$realm/clients"
   fi
 }
-
-set_client_secret() {
-  local realm="$1"
-  local client_id="$2"
-  local secret="$3"
-  local uuid
-
-  uuid="$(get_client_uuid "$realm" "$client_id")"
-  [[ -n "$uuid" ]] || return 1
-
-  echo "Setting client secret for: $client_id"
-
-  kc create \
-    "realms/$realm/clients/$uuid/client-secret" \
-    -s "value=$secret" >/dev/null
-}

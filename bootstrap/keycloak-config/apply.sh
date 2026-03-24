@@ -66,9 +66,9 @@ create_or_update_client \
   "gitlab" \
   "$SCRIPT_DIR/desired/clients/gitlab.json"
 
-set_client_secret \
+create_or_update_client \
   "$KEYCLOAK_REALM" \
-  "gitlab" \
-  "$GITLAB_OIDC_CLIENT_SECRET"
+  "jenkins" \
+  "$SCRIPT_DIR/desired/clients/jenkins.json"
 
 echo "Keycloak realm configuration applied successfully."
