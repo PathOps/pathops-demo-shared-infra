@@ -30,46 +30,18 @@ require_cmd jq
 require_cmd envsubst
 require_cmd kubectl
 
+: "${KEYCLOAK_URL:?Missing KEYCLOAK_URL}"
+: "${KEYCLOAK_REALM:?Missing KEYCLOAK_REALM}"
+: "${KEYCLOAK_ADMIN:?Missing KEYCLOAK_ADMIN}"
+: "${KEYCLOAK_ADMIN_PASSWORD:?Missing KEYCLOAK_ADMIN_PASSWORD}"
+
+: "${CONTROL_PLANE_BASE_URL:?Missing CONTROL_PLANE_BASE_URL}"
+: "${CONTROL_PLANE_PUBLIC_REDIRECT_URIS:?Missing CONTROL_PLANE_PUBLIC_REDIRECT_URIS}"
+: "${CONTROL_PLANE_PUBLIC_WEB_ORIGINS:?Missing CONTROL_PLANE_PUBLIC_WEB_ORIGINS}"
+: "${CONTROL_PLANE_ADMIN_API_CLIENT_SECRET:?Missing CONTROL_PLANE_ADMIN_API_CLIENT_SECRET}"
+: "${CONTROL_PLANE_KEYCLOAK_ADMIN_CLIENT_SECRET:?Missing CONTROL_PLANE_KEYCLOAK_ADMIN_CLIENT_SECRET}"
+
 kc_login "$KEYCLOAK_URL" "$KEYCLOAK_ADMIN" "$KEYCLOAK_ADMIN_PASSWORD"
-
-create_or_update_realm \
-  "$KEYCLOAK_REALM" \
-  "$SCRIPT_DIR/desired/realm.json"
-
-ensure_realm_role \
-  "$KEYCLOAK_REALM" \
-  "pathops_admin" \
-  "PathOps realm administrator"
-
-create_or_update_user \
-  "$KEYCLOAK_REALM" \
-  "$SCRIPT_DIR/desired/users/pathops-admin.json" \
-  "$PATHOPS_ADMIN_USERNAME"
-
-set_user_password \
-  "$KEYCLOAK_REALM" \
-  "$PATHOPS_ADMIN_USERNAME" \
-  "$PATHOPS_ADMIN_PASSWORD"
-
-ensure_user_realm_role \
-  "$KEYCLOAK_REALM" \
-  "$PATHOPS_ADMIN_USERNAME" \
-  "pathops_admin"
-
-create_or_update_idp \
-  "$KEYCLOAK_REALM" \
-  "google" \
-  "$SCRIPT_DIR/desired/identity-providers/google.json"
-
-create_or_update_client \
-  "$KEYCLOAK_REALM" \
-  "gitlab" \
-  "$SCRIPT_DIR/desired/clients/gitlab.json"
-
-create_or_update_client \
-  "$KEYCLOAK_REALM" \
-  "jenkins" \
-  "$SCRIPT_DIR/desired/clients/jenkins.json"
 
 create_or_update_client \
   "$KEYCLOAK_REALM" \
@@ -86,4 +58,4 @@ create_or_update_client \
   "control-plane-keycloak-admin" \
   "$SCRIPT_DIR/desired/clients/control-plane-keycloak-admin.json"
 
-echo "Keycloak realm configuration applied successfully."
+echo "PathOps Control Plane clients applied successfully."

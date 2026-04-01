@@ -1,0 +1,25 @@
+{
+  "clientId": "control-plane-keycloak-admin",
+  "name": "PathOps Control Plane Keycloak Admin",
+  "description": "Technical confidential client used by PathOps Control Plane to call Keycloak Admin APIs",
+  "enabled": true,
+  "protocol": "openid-connect",
+  "publicClient": false,
+  "bearerOnly": false,
+  "standardFlowEnabled": false,
+  "implicitFlowEnabled": false,
+  "directAccessGrantsEnabled": false,
+  "serviceAccountsEnabled": true,
+  "clientAuthenticatorType": "client-secret",
+  "secret": "${CONTROL_PLANE_KEYCLOAK_ADMIN_CLIENT_SECRET}",
+  "rootUrl": "${CONTROL_PLANE_BASE_URL}",
+  "baseUrl": "${CONTROL_PLANE_BASE_URL}",
+  "redirectUris": [],
+  "webOrigins": [],
+  "defaultClientScopes": [
+    "roles"
+  ],
+  "optionalClientScopes": [
+    "microprofile-jwt"
+  ]
+}

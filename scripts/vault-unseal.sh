@@ -13,12 +13,12 @@ set -a
 source "$VAULT_FILE"
 set +a
 
-if [ -z "${VAULT_UNSEAL_KEY:-}" ]; then
-  echo "VAULT_UNSEAL_KEY not found in $VAULT_FILE"
+if [ -z "${VAULT_UNSEAL_KEY_1:-}" ]; then
+  echo "VAULT_UNSEAL_KEY_1 not found in $VAULT_FILE"
   exit 1
 fi
 
 kubectl -n vault exec -i statefulset/vault -- sh -c '
   export VAULT_ADDR=http://127.0.0.1:8200
   vault operator unseal "$1"
-' sh "$VAULT_UNSEAL_KEY"
+' sh "$VAULT_UNSEAL_KEY_1"

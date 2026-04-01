@@ -1,0 +1,32 @@
+{
+  "clientId": "control-plane-public",
+  "name": "PathOps Control Plane Public",
+  "description": "Public client for PathOps CLI and future UI",
+  "enabled": true,
+  "protocol": "openid-connect",
+  "publicClient": true,
+  "bearerOnly": false,
+  "standardFlowEnabled": true,
+  "implicitFlowEnabled": false,
+  "directAccessGrantsEnabled": false,
+  "serviceAccountsEnabled": false,
+  "rootUrl": "${CONTROL_PLANE_BASE_URL}",
+  "baseUrl": "${CONTROL_PLANE_BASE_URL}",
+  "redirectUris": ${CONTROL_PLANE_PUBLIC_REDIRECT_URIS},
+  "webOrigins": ${CONTROL_PLANE_PUBLIC_WEB_ORIGINS},
+  "attributes": {
+    "pkce.code.challenge.method": "S256"
+  },
+  "defaultClientScopes": [
+    "profile",
+    "email",
+    "roles",
+    "web-origins"
+  ],
+  "optionalClientScopes": [
+    "address",
+    "phone",
+    "offline_access",
+    "microprofile-jwt"
+  ]
+}
