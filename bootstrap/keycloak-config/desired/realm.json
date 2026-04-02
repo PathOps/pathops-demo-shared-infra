@@ -6,5 +6,6 @@
   "duplicateEmailsAllowed": false,
   "resetPasswordAllowed": false,
   "rememberMe": true,
-  "verifyEmail": true
+  "verifyEmail": true,
+  "loginTheme": "pathops"
 }

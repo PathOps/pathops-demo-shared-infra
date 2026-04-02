@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: quay.io/keycloak/keycloak:26.1
+          image: gborba/pathops-keycloak:26.1-theme-v4
           imagePullPolicy: IfNotPresent
           args:
             - start
