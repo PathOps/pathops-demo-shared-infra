@@ -7,11 +7,6 @@
 
     <div class="pathops-login-shell">
 
-      <div class="pathops-login-header">
-        <h1 class="pathops-login-title">PathOps</h1>
-        <p class="pathops-login-subtitle">Sign in to continue</p>
-      </div>
-
       <#assign googleProvider = "">
       <#if social?? && social.providers??>
         <#list social.providers as p>
@@ -24,7 +19,7 @@
       <#if googleProvider?has_content>
         <div class="pathops-google-section">
           <a class="pathops-google-button" href="${googleProvider}">
-            Login with Google
+            Sign in with Google
           </a>
         </div>
       </#if>
