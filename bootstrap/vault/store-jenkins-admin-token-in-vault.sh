@@ -10,7 +10,7 @@ VAULT_ENV_FILE="${VAULT_ENV_FILE:-$SECRETS_DIR/vault.env}"
 
 : "${VAULT_ADDR:=https://vault.demo.pathops.io}"
 : "${VAULT_KV_MOUNT:=secret}"
-: "${VAULT_SECRET_PATH:=pathops/control-plane/jenkins}"
+: "${VAULT_SECRET_PATH:=pathops/projector/jenkins}"
 
 if [[ ! -f "$JENKINS_ENV_FILE" ]]; then
   echo "ERROR: missing env file: $JENKINS_ENV_FILE" >&2

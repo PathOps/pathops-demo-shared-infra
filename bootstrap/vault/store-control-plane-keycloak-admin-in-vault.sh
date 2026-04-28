@@ -11,7 +11,7 @@ VAULT_ENV_FILE="${VAULT_ENV_FILE:-$SECRETS_DIR/vault.env}"
 
 : "${VAULT_ADDR:=https://vault.demo.pathops.io}"
 : "${VAULT_KV_MOUNT:=secret}"
-: "${VAULT_SECRET_PATH:=pathops/control-plane/keycloak-admin}"
+: "${VAULT_SECRET_PATH:=pathops/projector/keycloak-admin}"
 
 if [[ ! -f "$KEYCLOAK_ENV_FILE" ]]; then
   echo "ERROR: missing env file: $KEYCLOAK_ENV_FILE" >&2
